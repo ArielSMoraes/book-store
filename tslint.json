@@ -2,6 +2,9 @@
   "lintOptions": {
     "typeCheck": true
   },
+  "plugins": [
+    "react-hooks"
+  ],
   "extends": ["tslint-react"],
   "rules": {
     "arrow-return-shorthand": true,
@@ -11,7 +14,7 @@
     "eofline": true,
     "import-spacing": true,
     "indent": [true, "spaces", 2],
-    "linebreak-style": [true, "CRLF"],
+    "linebreak-style": [true, "LF"],
     "interface-name": false,
     "max-classes-per-file": false,
     "new-parens": true,
@@ -21,6 +24,8 @@
     "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": true,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "no-console": {
       "severity": "warning",
       "options": [

@@ -10,7 +10,7 @@ const styles = {
 
 const App = () => (
   <div style={styles}>
-    <Hello name='USER' />
+    <Hello name='Mother Fucker' />
 
     <h2>Start editing to see some magic happen {'\u2728'}</h2>
   </div>
