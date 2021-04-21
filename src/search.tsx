@@ -7,6 +7,8 @@ const SearchWrapper = styled.div`
   height: 22pt;
   display: flex;
   padding: 17pt;
+  margin: -17pt;
+  margin-bottom: 40pt;
   justify-content: space-between;
 `
 
@@ -14,7 +16,7 @@ const Img = styled.img`
   height: 22pt;
 `
 
-export const Search: FunctionComponent = () => {
+const Search: FunctionComponent = () => {
   return (
     <SearchWrapper>
       <Img src='assets/logo.jpg'/>
@@ -22,3 +24,5 @@ export const Search: FunctionComponent = () => {
     </SearchWrapper>
   )
 }
+
+export default Search
