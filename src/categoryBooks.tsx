@@ -6,14 +6,14 @@ type Props = {
   category: string
 }
 
-const H2 = styled.h2`
+export const H2 = styled.h2`
   color: #2D2D2E;
 `
 
 const CategoryBooks: FunctionComponent<Props> = ({ category }: Props) => {
   return (
     <>
-      <H2> {category} </H2>
+      <H2>{category}</H2>
       <ListBooks term={category} />
     </>
   )

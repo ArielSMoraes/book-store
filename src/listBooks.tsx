@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import * as BookStyled from 'styleBooks'
+import * as BookStyled from './styleBooks'
 
 type Props = {
   term: string
@@ -14,7 +14,7 @@ type Book = {
   categories: []
 }
 
-const listBooks: FunctionComponent<Props> = ({term}: Props) => {
+const ListBooks: FunctionComponent<Props> = ({term}: Props) => {
   const googleApi = 'https://www.googleapis.com/books/v1/volumes'
   const source = `${googleApi}?q=${term}&startIndex=0&maxResults=20`
   const [listBooks, setListBooks] = useState([])
@@ -42,4 +42,4 @@ const listBooks: FunctionComponent<Props> = ({term}: Props) => {
   )
 }
 
-export default listBooks
+export default ListBooks
