@@ -3,7 +3,8 @@
     "typeCheck": true
   },
   "plugins": [
-    "react-hooks"
+    "react-hooks",
+    "babel-plugin-styled-components"
   ],
   "extends": ["tslint-react"],
   "rules": {

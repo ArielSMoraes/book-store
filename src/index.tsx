@@ -1,19 +1,13 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 
-import Hello from './hello'
-
-const styles = {
-  fontFamily: 'sans-serif',
-  textAlign: 'center'
-} as React.CSSProperties
+import { GlobalRules } from 'global-rules'
+import { Search } from './search'
 
 const App = () => (
-  <div style={styles}>
-    <Hello name='Mother Fucker' />
-
-    <h2>Start editing to see some magic happen {'\u2728'}</h2>
-  </div>
+  <GlobalRules>
+    <Search />
+  </GlobalRules>
 )
 
 render(<App />, document.getElementById('root'))
