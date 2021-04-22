@@ -5,7 +5,7 @@ type Props = {
   term: string
 }
 
-type Book = {
+export type Book = {
   id: string,
   volumeInfo: {
     title: string,

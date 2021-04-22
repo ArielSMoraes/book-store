@@ -18,8 +18,10 @@
     "eject": "react-scripts-ts eject"
   },
   "dependencies": {
+    "@testing-library/react": "^11.2.6",
     "enzyme-to-json": "^3.6.2",
     "jest-environment-jsdom": "^26.6.2",
+    "jest-fetch-mock": "^3.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",

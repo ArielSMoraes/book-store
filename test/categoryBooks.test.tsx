@@ -1,12 +1,11 @@
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import React from 'react'
-
-Enzyme.configure({ adapter: new Adapter() })
 import toJson from 'enzyme-to-json'
-
+import React from 'react'
 import CategoryBooks, { H2 } from '../src/categoryBooks'
 import ListBooks from '../src/listBooks'
+
+Enzyme.configure({ adapter: new Adapter() })
 
 describe('CategoryBooks', () => {
   test('category has a title ', () => {
