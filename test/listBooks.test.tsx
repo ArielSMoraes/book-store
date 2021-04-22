@@ -26,20 +26,7 @@ describe('ListBooks', () => {
   test('should make a request on', async() => {
     const container = document.createElement('div')
     document.body.appendChild(container)
-    fetchMock.mockResponseOnce(JSON.stringify({
-      items: [{
-        "id": "UBR6DwAAQBAJ",
-        "volumeInfo": {
-          "imageLinks": {
-            "smallThumbnail": "http://books.google.com/books/content?id=UBR6DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-            "thumbnail": "http://books.google.com/books/content?id=UBR6DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-          },
-          "title": "Sonho Ou Aventura"
-        }
-      }],
-      kind: "books#volumes",
-      totalItems: 1445
-    }))
+    fetchMock.mockResponse(JSON.stringify(apiMock(1)))
 
     act(() => {
       render(<ListBooks term='Action' />, container)
@@ -49,4 +36,58 @@ describe('ListBooks', () => {
       expect(fetchMock.mock.calls.length).toEqual(1)
     })
   })
+
+  test('should make render 3 books', async() => {
+    const container = document.createElement('div')
+    document.body.appendChild(container)
+    fetchMock.mockResponse(JSON.stringify(apiMock(3)))
+
+    act(() => {
+      render(<ListBooks term='Action' />, container)
+    })
+
+    await waitFor(() => {
+      expect(container.querySelectorAll('figure').length).toBe(3)
+    })
+  })
+
+  test('should get books with term in query', async() => {
+    const container = document.createElement('div')
+    document.body.appendChild(container)
+    fetchMock.mockResponse(JSON.stringify(apiMock(3)))
+
+    act(() => {
+      render(<ListBooks term='Action' />, container)
+    })
+
+    await waitFor(() => {
+      expect(fetchMock.mock.calls[0][0]).toContain('q=Action')
+    })
+  })
 })
+
+function apiMock(count: number) {
+  const items = []
+  for (let index = 0; index < count; index++) {
+    items.push(bookMock(index))
+  }
+
+  return {
+    items,
+    kind: "books#volumes",
+    totalItems: 1445
+  }
+}
+
+function bookMock(id: number) {
+  return {
+    id,
+    "volumeInfo": {
+      "imageLinks": {
+        "smallThumbnail": `smallthumbOf${id}`,
+        "thumbnail": `thumbOf${id}`
+      },
+      "title": `Title of ${id}`
+    }
+  }
+}
