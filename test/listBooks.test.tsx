@@ -9,6 +9,8 @@ import { render } from "react-dom"
 import { act } from "react-dom/test-utils"
 import ListBooks from '../src/listBooks'
 
+import { apiResponseMock } from '../src/mocks/apiMock'
+
 enableFetchMocks()
 
 describe('ListBooks', () => {
@@ -26,7 +28,7 @@ describe('ListBooks', () => {
   test('should make a request on', async() => {
     const container = document.createElement('div')
     document.body.appendChild(container)
-    fetchMock.mockResponse(JSON.stringify(apiMock(1)))
+    fetchMock.mockResponse(JSON.stringify(apiResponseMock(1)))
 
     act(() => {
       render(<ListBooks term='Action' />, container)
@@ -40,7 +42,7 @@ describe('ListBooks', () => {
   test('should make render 3 books', async() => {
     const container = document.createElement('div')
     document.body.appendChild(container)
-    fetchMock.mockResponse(JSON.stringify(apiMock(3)))
+    fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
 
     act(() => {
       render(<ListBooks term='Action' />, container)
@@ -54,7 +56,7 @@ describe('ListBooks', () => {
   test('should get books with term in query', async() => {
     const container = document.createElement('div')
     document.body.appendChild(container)
-    fetchMock.mockResponse(JSON.stringify(apiMock(3)))
+    fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
 
     act(() => {
       render(<ListBooks term='Action' />, container)
@@ -65,29 +67,3 @@ describe('ListBooks', () => {
     })
   })
 })
-
-function apiMock(count: number) {
-  const items = []
-  for (let index = 0; index < count; index++) {
-    items.push(bookMock(index))
-  }
-
-  return {
-    items,
-    kind: "books#volumes",
-    totalItems: 1445
-  }
-}
-
-function bookMock(id: number) {
-  return {
-    id,
-    "volumeInfo": {
-      "imageLinks": {
-        "smallThumbnail": `smallthumbOf${id}`,
-        "thumbnail": `thumbOf${id}`
-      },
-      "title": `Title of ${id}`
-    }
-  }
-}
