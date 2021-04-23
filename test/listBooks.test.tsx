@@ -8,7 +8,6 @@ import React from 'react'
 import { render } from "react-dom"
 import { act } from "react-dom/test-utils"
 import ListBooks from '../src/listBooks'
-
 import { apiResponseMock } from '../src/mocks/apiMock'
 
 enableFetchMocks()
@@ -26,8 +25,6 @@ describe('ListBooks', () => {
   })
 
   test('should make a request on', async() => {
-    const container = document.createElement('div')
-    document.body.appendChild(container)
     fetchMock.mockResponse(JSON.stringify(apiResponseMock(1)))
 
     act(() => {
@@ -40,8 +37,6 @@ describe('ListBooks', () => {
   })
 
   test('should make render 3 books', async() => {
-    const container = document.createElement('div')
-    document.body.appendChild(container)
     fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
 
     act(() => {
@@ -54,8 +49,6 @@ describe('ListBooks', () => {
   })
 
   test('should get books with term in query', async() => {
-    const container = document.createElement('div')
-    document.body.appendChild(container)
     fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
 
     act(() => {

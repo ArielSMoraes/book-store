@@ -1,30 +1,37 @@
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import toJson from 'enzyme-to-json'
-import React from 'react'
-import CategoryBooks, { H2 } from '../src/categoryBooks'
-import ListBooks from '../src/listBooks'
+/**
+ * @jest-environment jsdom
+ */
 
-Enzyme.configure({ adapter: new Adapter() })
+import { waitFor } from '@testing-library/react'
+import { enableFetchMocks } from "jest-fetch-mock"
+import React from 'react'
+import { render } from "react-dom"
+import { act } from "react-dom/test-utils"
+import CategoryBooks from '../src/categoryBooks'
+import { apiResponseMock } from '../src/mocks/apiMock'
+
+enableFetchMocks()
 
 describe('CategoryBooks', () => {
-  test('category has a title ', () => {
-    const wrapper = shallow(<CategoryBooks category='Action' />)
+  let container: HTMLDivElement
 
-    expect(wrapper.find(H2)).toHaveLength(1)
+  beforeEach(() => {
+    container = document.createElement('div')
+    document.body.appendChild(container)
+    fetchMock.mockResponse(JSON.stringify(apiResponseMock(1)))
   })
 
-  test('category name is used as title', () => {
-    const wrapper = shallow(<CategoryBooks category='Action' />)
-
-    expect(wrapper.find(H2).text()).toBe('Action')
+  afterEach(() => {
+    document.body.removeChild(container)
   })
 
-  test('should call ListBooks with correct term', () => {
-    const wrapper = shallow(<CategoryBooks category='Action' />)
-
-    const listBooksTerm = toJson(wrapper.find(ListBooks)).props.term
-
-    expect(listBooksTerm).toBe('Action')
+  test('category name is used as title ', async() => {
+    await waitFor(() => {
+      act(() => {
+        render(<CategoryBooks category='Action' />, container)
+        expect(document.querySelectorAll('h2').length).toEqual(1)
+        expect(document.querySelector('h2')?.textContent).toEqual('Action')
+      })
+    })
   })
 })
