@@ -1,20 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import styled from "styled-components"
-
-const SearchWrapper = styled.div`
-  background-color: #EFFAFF;
-  height: 22pt;
-  display: flex;
-  padding: 17pt;
-  margin: -17pt;
-  margin-bottom: 40pt;
-  justify-content: space-between;
-`
-
-const Img = styled.img`
-  height: 22pt;
-`
+import { Img, SearchWrapper } from './styled-components/styledSearch'
 
 const Search: FunctionComponent = () => {
   return (

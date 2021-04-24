@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import * as BookStyled from './styled-components/styleBooks'
+import * as BookStyled from './styled-components/styledBooks'
 
 type Props = {
   term: string,

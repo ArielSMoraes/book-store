@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import ListBooks from './listBooks'
-import { Div, H2 } from './styled-components/styleCategoryBooks'
+import { Div, H2 } from './styled-components/styledCategoryBooks'
 
 type Props = {
   category: string,
