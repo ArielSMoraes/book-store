@@ -10,12 +10,13 @@ type Props = {
 const H2 = styled.h2`
   color: #2D2D2E;
 `
+
 const Div = styled.div<{highlight: boolean}>`
   ${props => props.highlight ? `
-      padding: 17pt;
-      margin: -17pt;
-      background-color: #47B7ED;
-    ` : ''};
+    padding: 17pt;
+    margin: -17pt;
+    background-color: #47B7ED;
+  ` : ''};
 `
 
 const CategoryBooks: FunctionComponent<Props> = ({ category, highlight = false }: Props) => {
