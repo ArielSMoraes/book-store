@@ -10,7 +10,7 @@ const App = () => (
     <Search />
     <CategoryBooks category='Aventura' />
     <CategoryBooks category='Infantil' />
-    <CategoryBooks category='Destaques' />
+    <CategoryBooks category='Destaques' highlight={true} />
     <CategoryBooks category='Ação' />
   </GlobalRules>
 )
