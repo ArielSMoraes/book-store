@@ -7,14 +7,16 @@ type Props = {
   highlight?: boolean
 }
 
-const H2 = styled.h2`
-  color: #2D2D2E;
+const H2 = styled.h2<{highlight: boolean}>`
+  color: ${props => props.highlight ? "white" : "#2D2D2E"}
 `
 
 const Div = styled.div<{highlight: boolean}>`
+  margin: 32pt 0;
+
   ${props => props.highlight ? `
     padding: 17pt;
-    margin: -17pt;
+    margin: 32pt -17pt;
     background-color: #47B7ED;
   ` : ''};
 `
@@ -22,8 +24,8 @@ const Div = styled.div<{highlight: boolean}>`
 const CategoryBooks: FunctionComponent<Props> = ({ category, highlight = false }: Props) => {
   return (
     <Div highlight={highlight}>
-      <H2>{category}</H2>
-      <ListBooks term={category} />
+      <H2 highlight={highlight}>{category}</H2>
+      <ListBooks highlight={highlight} term={category} />
     </Div>
   )
 }

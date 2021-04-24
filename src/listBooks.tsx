@@ -2,7 +2,8 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import * as BookStyled from './styleBooks'
 
 type Props = {
-  term: string
+  term: string,
+  highlight: boolean
 }
 
 type Book = {
@@ -14,7 +15,7 @@ type Book = {
   categories: []
 }
 
-const ListBooks: FunctionComponent<Props> = ({term}: Props) => {
+const ListBooks: FunctionComponent<Props> = ({term, highlight = false}: Props) => {
   const googleApi = 'https://www.googleapis.com/books/v1/volumes'
   const source = `${googleApi}?q=${term}&startIndex=0&maxResults=20`
   const [listBooks, setListBooks] = useState([])
@@ -31,12 +32,12 @@ const ListBooks: FunctionComponent<Props> = ({term}: Props) => {
   const listBooksComponent = listBooks.map( (book: Book) => (
     <BookStyled.Figure key={book.id}>
       <BookStyled.Img src={book.volumeInfo?.imageLinks?.thumbnail} />
-      <figcaption>{book.volumeInfo?.title}</figcaption>
+      <BookStyled.FigCaption>{book.volumeInfo?.title}</BookStyled.FigCaption>
     </BookStyled.Figure>
   ))
 
   return (
-    <BookStyled.BooksBox>
+    <BookStyled.BooksBox highlight={highlight}>
       {listBooksComponent}
     </BookStyled.BooksBox>
   )
