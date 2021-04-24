@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 
-import { GlobalRules } from 'globalRules'
 import CategoryBooks from './categoryBooks'
+import { GlobalRules } from './globalRules'
 import Search from './search'
 
 const App = () => (

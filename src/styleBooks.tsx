@@ -19,7 +19,6 @@ export const Figure = styled.figure`
 export const BooksBox = styled.div<{highlight: boolean}>`
   color: ${props => props.highlight ? "white" : "#595A5C"};
   display: flex;
-  width: 100vh;
   overflow: scroll;
 `
 
