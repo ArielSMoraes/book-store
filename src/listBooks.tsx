@@ -3,7 +3,7 @@ import * as BookStyled from './styled-components/styledBooks'
 
 type Props = {
   term: string,
-  highlight: boolean
+  highlight?: boolean
 }
 
 type Book = {
