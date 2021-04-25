@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useState } from 'react'
-import { FaSearch, FaBacon } from 'react-icons/fa'
-import { Img, SearchWrapper } from './styled-components/styledSearch'
+import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
+import { FaSearch } from 'react-icons/fa'
+import { Img, Input, SearchWrapper } from './styled-components/styledSearch'
 
 const Search: FunctionComponent = () => {
   const [searchActive, setSearchActive] = useState(false)
+  const inputRef = useRef(null)
 
   const toggleSearchActive = () => {
     setSearchActive(!searchActive)
@@ -11,22 +12,33 @@ const Search: FunctionComponent = () => {
 
   const InativeSearch = () => {
     return (
-      <SearchWrapper>
+      <>
         <Img src='assets/logo.jpg'/>
         <FaSearch size='22pt' color='#2D2D2E' onClick={toggleSearchActive}/>
-      </SearchWrapper>
+      </>
     )
   }
 
   const ActiveSearch = () => {
     return (
-      <SearchWrapper>
-        <FaBacon size='22pt' color='#2D2D2E' onClick={toggleSearchActive}/>
-      </SearchWrapper>
+      <>
+        <Input placeholder="Busca por livros ou autores" ref={inputRef}/>
+        <FaSearch size='22pt' color='#2D2D2E' onClick={toggleSearchActive}/>
+      </>
     )
   }
 
-  return searchActive ? <ActiveSearch /> : <InativeSearch />
+  useEffect(() => {
+    if (searchActive) {
+      inputRef.current.focus()
+    }
+  }, [searchActive])
+
+  return (
+    <SearchWrapper active={searchActive}>
+      {searchActive ? <ActiveSearch /> : <InativeSearch />}
+    </SearchWrapper>
+  )
 }
 
 export default Search
