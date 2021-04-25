@@ -1,18 +1,26 @@
-import * as React from 'react'
+import React from "react"
 import { render } from 'react-dom'
 
-import CategoryBooks from './categoryBooks'
+import Home from './home'
 import Search from './search'
-import { GlobalRules } from './styled-components/globalRules'
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom"
 
 const App = () => (
-  <GlobalRules>
-    <Search />
-    <CategoryBooks category='Aventura' />
-    <CategoryBooks category='Infantil' />
-    <CategoryBooks category='Destaques' highlight={true} />
-    <CategoryBooks category='Ação' />
-  </GlobalRules>
+  <Router>
+    <Switch>
+      <Route exact={true} path="/">
+        <Home />
+      </Route>
+      <Route path="/search/:term">
+        <Search />
+      </Route>
+    </Switch>
+  </Router>
 )
 
 render(<App />, document.getElementById('root'))

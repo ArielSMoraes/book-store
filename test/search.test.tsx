@@ -6,7 +6,7 @@ import { getByTestId } from '@testing-library/react'
 import React from 'react'
 import { render } from "react-dom"
 import { act, Simulate } from "react-dom/test-utils"
-import Search from '../src/search'
+import SearchInput from '../src/searchInput'
 
 describe("Search", () => {
   let container: HTMLDivElement
@@ -22,7 +22,7 @@ describe("Search", () => {
 
   it("Should render the search inactive", () => {
     act(() => {
-      render(<Search />, container)
+      render(<SearchInput />, container)
     })
 
     expect(
@@ -32,7 +32,7 @@ describe("Search", () => {
 
   it("Should render the search active", async() => {
     act(() => {
-      render(<Search />, container)
+      render(<SearchInput />, container)
     })
 
     act(() => {
