@@ -1,8 +1,8 @@
 import React from "react"
 import { render } from 'react-dom'
 
-import Home from './home'
-import Search from './search'
+import Home from './pages/home'
+import Search from './pages/search'
 
 import {
   BrowserRouter as Router,

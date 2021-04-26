@@ -1,7 +1,9 @@
+import { Book } from '../types/book'
+
 export function apiResponseMock(count: number) {
   const items = []
   for (let index = 0; index < count; index++) {
-    items.push(bookMock(index))
+    items.push(bookMock(`id-${index}`))
   }
 
   return {
@@ -11,10 +13,11 @@ export function apiResponseMock(count: number) {
   }
 }
 
-export function bookMock(id: number) {
+export function bookMock(id: string): Book {
   return {
+    categories: ['some category'],
     id,
-    "volumeInfo": {
+    volumeInfo: {
       "imageLinks": {
         "smallThumbnail": `smallthumbOf${id}`,
         "thumbnail": `thumbOf${id}`

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import { Img, Input, SearchWrapper } from './styled-components/styledSearch'
+import { Img, Input, SearchWrapper } from '../styled-components/styledSearch'
 
 const Search: FunctionComponent = () => {
   const [searchActive, setSearchActive] = useState(false)

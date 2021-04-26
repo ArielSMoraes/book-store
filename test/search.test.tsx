@@ -6,7 +6,7 @@ import { getByTestId } from '@testing-library/react'
 import React from 'react'
 import { render } from "react-dom"
 import { act, Simulate } from "react-dom/test-utils"
-import SearchInput from '../src/searchInput'
+import SearchInput from '../src/components/searchInput'
 
 describe("Search", () => {
   let container: HTMLDivElement

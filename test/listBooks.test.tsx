@@ -7,8 +7,9 @@ import fetchMock, { enableFetchMocks } from "jest-fetch-mock"
 import React from 'react'
 import { render } from "react-dom"
 import { act } from "react-dom/test-utils"
-import ListBooks from '../src/listBooks'
-import { apiResponseMock } from '../src/mocks/apiMock'
+import ListBooks from '../src/components/listBooks'
+import { bookMock } from '../src/mocks/apiMock'
+import { Book } from '../src/types/book'
 
 enableFetchMocks()
 
@@ -18,45 +19,38 @@ describe('ListBooks', () => {
   beforeEach(() => {
     container = document.createElement('div')
     document.body.appendChild(container)
+    fetchMock.resetMocks()
   })
 
   afterEach(() => {
     document.body.removeChild(container)
   })
 
-  test('should make a request on', async() => {
-    fetchMock.mockResponse(JSON.stringify(apiResponseMock(1)))
+  test('should make render 1 book', async() => {
+    const books: Array<Book> = []
+    books.push(bookMock('fakeId'))
 
     act(() => {
-      render(<ListBooks term='Action' />, container)
+      render(<ListBooks books={books} />, container)
     })
 
     await waitFor(() => {
-      expect(fetchMock.mock.calls.length).toEqual(1)
+      expect(container.querySelectorAll('figure').length).toBe(1)
     })
   })
 
   test('should make render 3 books', async() => {
-    fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
+    const books: Array<Book> = []
+    books.push(bookMock('fakeId1'))
+    books.push(bookMock('fakeId2'))
+    books.push(bookMock('fakeId3'))
 
     act(() => {
-      render(<ListBooks term='Action' />, container)
+      render(<ListBooks books={books} />, container)
     })
 
     await waitFor(() => {
-      expect(container.querySelectorAll('figure').length).toBe(3)
-    })
-  })
-
-  test('should get books with term in query', async() => {
-    fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
-
-    act(() => {
-      render(<ListBooks term='Action' />, container)
-    })
-
-    await waitFor(() => {
-      expect(fetchMock.mock.calls[0][0]).toContain('q=Action')
+      expect(container.querySelectorAll('div > figure').length).toBe(3)
     })
   })
 })

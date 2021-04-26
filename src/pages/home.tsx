@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import CategoryBooks from './categoryBooks'
-import SearchInput from './searchInput'
-import { GlobalRules } from './styled-components/globalRules'
+import CategoryBooks from '../components/categoryBooks'
+import SearchInput from '../components/searchInput'
+import { GlobalRules } from '../styled-components/globalRules'
 
 const Home = () => (
   <GlobalRules>
