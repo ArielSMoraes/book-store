@@ -4,22 +4,19 @@ import { Book } from '../types/book'
 
 type Props = {
   books: Book[],
+  wrap?: boolean,
   highlight?: boolean
 }
 
-const ListBooks: FunctionComponent<Props> = ({books, highlight = false}: Props) => {
+const ListBooks: FunctionComponent<Props> = ({books, wrap = false, highlight = false}: Props) => {
   const listBooksComponent = books.map( (book: Book) => (
-    <BookStyled.Figure key={book.id}>
+    <BookStyled.Figure key={book.id} wrap={wrap}>
       <BookStyled.Img src={book.volumeInfo?.imageLinks?.thumbnail} />
       <BookStyled.FigCaption>{book.volumeInfo?.title}</BookStyled.FigCaption>
     </BookStyled.Figure>
   ))
 
-  return (
-    <BookStyled.BooksBox highlight={highlight}>
-      {listBooksComponent}
-    </BookStyled.BooksBox>
-  )
+  return <>{listBooksComponent}</>
 }
 
 export default ListBooks

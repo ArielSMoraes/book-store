@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import * as BookStyled from '../styled-components/styledBooks'
 import { Div, H2 } from '../styled-components/styledCategoryBooks'
 import ListBooks from './listBooks'
 
@@ -24,7 +25,9 @@ const CategoryBooks: FunctionComponent<Props> = ({ category, highlight = false }
   return (
     <Div highlight={highlight}>
       <H2 highlight={highlight}>{category}</H2>
-      <ListBooks highlight={highlight} books={listBooks} />
+      <BookStyled.BooksBox highlight={highlight}>
+        <ListBooks highlight={highlight} books={listBooks} />
+      </BookStyled.BooksBox>
     </Div>
   )
 }

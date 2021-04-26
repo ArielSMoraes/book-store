@@ -27,3 +27,8 @@ export const Input = styled.input`
     outline: none;
   }
 `
+
+export const BooksBoxSearch = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`

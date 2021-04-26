@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Img = styled.img`
   height: 138pt;
   margin-bottom: 10pt;
+  width: 100%;
 `
 
-export const Figure = styled.figure`
-  width: 94pt;
-  min-width: 94pt;
-  margin: 0;
-  margin-right: 15pt;
+export const Figure = styled.figure<{wrap: boolean}>`
+  width: 30%;
+  min-width: 30%;
+  margin: ${props => props.wrap ? "0 8pt 17pt 0" : " 0 15pt 0 0"};
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   text-align: center;
