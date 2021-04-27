@@ -31,4 +31,5 @@ export const Input = styled.input`
 export const BooksBoxSearch = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 `

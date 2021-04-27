@@ -5,12 +5,13 @@ import ListBooks from './listBooks'
 
 type Props = {
   category: string,
+  search: string,
   highlight?: boolean
 }
 
-const CategoryBooks: FunctionComponent<Props> = ({ category, highlight = false }: Props) => {
+const CategoryBooks: FunctionComponent<Props> = ({ category, search, highlight = false }: Props) => {
   const googleApi = 'https://www.googleapis.com/books/v1/volumes'
-  const source = `${googleApi}?q=${category}&startIndex=0&maxResults=20`
+  const source = `${googleApi}?q=${search}&startIndex=0&maxResults=20`
   const [listBooks, setListBooks] = useState([])
 
   useEffect(() => {

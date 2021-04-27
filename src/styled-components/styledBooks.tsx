@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Img = styled.img`
-  height: 138pt;
   margin-bottom: 10pt;
   width: 100%;
 `
@@ -20,6 +19,7 @@ export const BooksBox = styled.div<{highlight: boolean}>`
   color: ${props => props.highlight ? "white" : "#595A5C"};
   display: flex;
   overflow: scroll;
+  align-items: baseline;
 `
 
 export const FigCaption = styled.figcaption`
