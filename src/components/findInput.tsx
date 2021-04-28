@@ -1,14 +1,20 @@
 import React, { ChangeEvent, FunctionComponent, useEffect, useRef, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import { Img, Input, SearchWrapper } from '../styled-components/styledSearch'
+import { useHistory } from "react-router-dom"
+import { HeaderWrapper, Img, Input } from '../styled-components/styledHeader'
 
-const Search: FunctionComponent = () => {
+const FindInput: FunctionComponent = () => {
   const [searchActive, setSearchActive] = useState(false)
   const [inputText, setInputText] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
+  const history = useHistory()
 
   const toggleSearchActive = () => {
     setSearchActive(!searchActive)
+  }
+
+  const goToSearchPage = () => {
+    history.push(`/search/${inputText}`)
   }
 
   const InativeSearch = () => {
@@ -31,19 +37,19 @@ const Search: FunctionComponent = () => {
     return (
       <>
         <Input
-          key="searchInput"
+          key="findInput"
           type="text"
           value={inputText}
           onChange={onChange}
-          data-testid='searchInput'
+          data-testid='search-input'
           placeholder="Busca por livros ou autores"
           ref={inputRef}
         />
         <FaSearch
-          data-testid='search-icon'
+          data-testid='do-search'
           size='22pt'
           color='#2D2D2E'
-          onClick={toggleSearchActive}
+          onClick={goToSearchPage}
         />
       </>
     )
@@ -57,10 +63,10 @@ const Search: FunctionComponent = () => {
   }, [searchActive, inputText])
 
   return (
-    <SearchWrapper active={searchActive}>
+    <HeaderWrapper blue={searchActive}>
       {searchActive ? <ActiveSearch /> : <InativeSearch />}
-    </SearchWrapper>
+    </HeaderWrapper>
   )
 }
 
-export default Search
+export default FindInput

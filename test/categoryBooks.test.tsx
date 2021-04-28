@@ -29,7 +29,7 @@ describe('CategoryBooks', () => {
     fetchMock.mockResponse(JSON.stringify(apiResponseMock(1)))
 
     act(() => {
-      render(<CategoryBooks category='Action' />, container)
+      render(<CategoryBooks category='Action' search='acao' />, container)
     })
 
     await waitFor(() => {
@@ -42,9 +42,9 @@ describe('CategoryBooks', () => {
 
     await waitFor(() => {
       act(() => {
-        render(<CategoryBooks category='Action' />, container)
+        render(<CategoryBooks category='Acao' search='Action' />, container)
         expect(document.querySelectorAll('h2').length).toEqual(1)
-        expect(document.querySelector('h2')?.textContent).toEqual('Action')
+        expect(document.querySelector('h2')?.textContent).toEqual('Acao')
       })
     })
   })
@@ -53,7 +53,7 @@ describe('CategoryBooks', () => {
     fetchMock.mockResponse(JSON.stringify(apiResponseMock(3)))
 
     act(() => {
-      render(<CategoryBooks category='Adventure' />, container)
+      render(<CategoryBooks category='Aventura' search='Adventure' />, container)
     })
 
     await waitFor(() => {

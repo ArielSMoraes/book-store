@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
+import useListBooks from '../hooks/useListBooks'
 import * as BookStyled from '../styled-components/styledBooks'
 import { Div, H2 } from '../styled-components/styledCategoryBooks'
 import ListBooks from './listBooks'
@@ -10,24 +11,13 @@ type Props = {
 }
 
 const CategoryBooks: FunctionComponent<Props> = ({ category, search, highlight = false }: Props) => {
-  const googleApi = 'https://www.googleapis.com/books/v1/volumes'
-  const source = `${googleApi}?q=${search}&startIndex=0&maxResults=20`
-  const [listBooks, setListBooks] = useState([])
-
-  useEffect(() => {
-    fetch(source, { method: "GET" })
-      .then(res => res.json())
-      .then(response => {
-        setListBooks(response.items)
-      })
-      .catch(error => console.log(error))
-  }, [])
+  const listBooks = useListBooks(search)
 
   return (
     <Div highlight={highlight}>
       <H2 highlight={highlight}>{category}</H2>
       <BookStyled.BooksBox highlight={highlight}>
-        <ListBooks highlight={highlight} books={listBooks} />
+        <ListBooks books={listBooks} />
       </BookStyled.BooksBox>
     </Div>
   )

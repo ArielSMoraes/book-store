@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 import CategoryBooks from '../components/categoryBooks'
-import SearchInput from '../components/searchInput'
+import FindInput from '../components/findInput'
 import { GlobalRules } from '../styled-components/globalRules'
 
 const Home = () => (
   <GlobalRules>
-    <SearchInput />
+    <FindInput />
     <CategoryBooks category='Aventura' search='subject:adventure' />
     <CategoryBooks category='Infantil' search='subject:juvenile'/>
     <CategoryBooks category='Destaques' search='turma da monica+inauthor:mauricio de sousa' highlight={true} />

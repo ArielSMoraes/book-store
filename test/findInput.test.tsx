@@ -6,7 +6,16 @@ import { getByTestId } from '@testing-library/react'
 import React from 'react'
 import { render } from "react-dom"
 import { act, Simulate } from "react-dom/test-utils"
-import SearchInput from '../src/components/searchInput'
+import FindInput from '../src/components/findInput'
+
+const mockHistoryPush = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush
+  })
+}))
 
 describe("Search", () => {
   let container: HTMLDivElement
@@ -22,17 +31,15 @@ describe("Search", () => {
 
   it("Should render the search inactive", () => {
     act(() => {
-      render(<SearchInput />, container)
+      render(<FindInput />, container)
     })
 
-    expect(
-      getByTestId(document.documentElement, 'logo')
-    ).toBeInTheDocument()
+    expect(getByTestId(document.documentElement, 'logo')).toBeInTheDocument()
   })
 
-  it("Should render the search active", async() => {
+  it("Should render the search active", () => {
     act(() => {
-      render(<SearchInput />, container)
+      render(<FindInput />, container)
     })
 
     act(() => {
@@ -43,8 +50,6 @@ describe("Search", () => {
       Simulate.click(searchIcon)
     })
 
-    expect(
-      getByTestId(document.documentElement, 'searchInput')
-    ).toBeInTheDocument()
+    expect(getByTestId(document.documentElement, 'search-input')).toBeInTheDocument()
   })
 })

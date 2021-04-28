@@ -31,7 +31,7 @@ describe('ListBooks', () => {
     books.push(bookMock('fakeId'))
 
     act(() => {
-      render(<ListBooks books={books} />, container)
+      render(<ListBooks books={books} wrap={true} />, container)
     })
 
     await waitFor(() => {
@@ -46,7 +46,7 @@ describe('ListBooks', () => {
     books.push(bookMock('fakeId3'))
 
     act(() => {
-      render(<ListBooks books={books} />, container)
+      render(<ListBooks books={books} wrap={true} />, container)
     })
 
     await waitFor(() => {
