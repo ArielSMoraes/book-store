@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { useParams } from "react-router-dom"
 import useListBooks from '../hooks/useListBooks'
 import { Div } from '../styled-components/styledCategoryBooks'
