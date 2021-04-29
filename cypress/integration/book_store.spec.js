@@ -3,7 +3,7 @@ context('Home Page', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it('search for book', () => {
+  it('search for a book', () => {
     cy.get("[data-testid='search-icon']").click()
     
     cy.get("[data-testid='search-input']").type('any book')
