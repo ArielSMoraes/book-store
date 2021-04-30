@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { FilterActions, FilterState, initialFilterState, reducerFilter } from 'reducers/filterReducer'
+import { FilterActions, FilterState, initialFilterState, reducerFilter } from '../reducers/filterReducer'
 
 import FilterButton from '../components/filterButton'
 import FilterWindow from '../components/filterWindow'

@@ -8,15 +8,6 @@ import { render } from "react-dom"
 import { act, Simulate } from "react-dom/test-utils"
 import FindInput from '../src/components/findInput'
 
-const mockHistoryPush = jest.fn()
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: mockHistoryPush
-  })
-}))
-
 describe("Search", () => {
   let container: HTMLDivElement
 

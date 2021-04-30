@@ -1,7 +1,7 @@
-import { SearchContext } from 'pages/search'
 import React, { FunctionComponent, useContext } from 'react'
 import { useParams } from "react-router-dom"
 import useListBooks from '../hooks/useListBooks'
+import { SearchContext } from '../pages/search'
 import { Div } from '../styled-components/styledCategoryBooks'
 import { BooksBoxSearch } from '../styled-components/styledHeader'
 import ListBooks from './listBooks'

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react'
 import { FaFilter } from 'react-icons/fa'
-import { Button } from 'styled-components/styledButtons'
 import { SearchContext } from '../pages/search'
+import { Button } from '../styled-components/styledButtons'
 
 const FilterButton: FunctionComponent = () => {
   const searchContext = useContext(SearchContext)
@@ -11,7 +11,7 @@ const FilterButton: FunctionComponent = () => {
   }
 
   return (
-    <Button onClick={handleClick}>
+    <Button data-testid="toggleFilter" onClick={handleClick}>
       <FaFilter
         data-testid='filter-button'
         size='12pt'

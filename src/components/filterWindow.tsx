@@ -1,7 +1,7 @@
-import { SearchContext } from 'pages/search'
 import React, { FunctionComponent, useContext, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
-import { Div, FilterNow, H1, InputBox, Span } from 'styled-components/styledFilterWindow'
+import { SearchContext } from '../pages/search'
+import { Div, FilterNow, H1, InputBox, Span } from '../styled-components/styledFilterWindow'
 
 const FilterButton: FunctionComponent = () => {
   const [filterPrice, setFilterPrice] = useState<string>('')
