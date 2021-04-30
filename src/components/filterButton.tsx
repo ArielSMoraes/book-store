@@ -1,17 +1,25 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import { FaFilter } from 'react-icons/fa'
-import { Text } from '../styled-components/styledHeader'
+import { Button } from 'styled-components/styledButtons'
+import { SearchContext } from '../pages/search'
 
 const FilterButton: FunctionComponent = () => {
+  const searchContext = useContext(SearchContext)
+
+  const handleClick = () => {
+    searchContext.dispatch({ type: 'TOGGLE_FILTER'})
+  }
+
   return (
-    <div>
+    <Button onClick={handleClick}>
       <FaFilter
         data-testid='filter-button'
-        size='22pt'
-        color='#2D2D2E'
+        size='12pt'
+        color='white'
+        style={{marginRight: '8pt'}}
       />
-      <Text>Resultados da Busca</Text>
-    </div>
+      <span>Filtrar</span>
+    </Button>
   )
 }
 
