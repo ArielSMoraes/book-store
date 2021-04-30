@@ -1,10 +1,11 @@
 import { Filters } from '../types/filters'
 
-export type FilterState = { filterOpen: boolean, filters: Filters }
+export type FilterState = { filterOpen: boolean, filters: Filters, page: number }
 export type FilterActions = |
   { type: 'TOGGLE_FILTER' } |
   { type: 'APPLY_FILTER'; payload: Filters } |
-  { type: 'REMOVE_FILTER' }
+  { type: 'REMOVE_FILTER' } |
+  { type: 'LOAD_MORE' }
 
 export const initialFilterState = {
   filterOpen: false,
@@ -14,7 +15,8 @@ export const initialFilterState = {
     epub: false,
     pdf: false,
     price: false
-  }
+  },
+  page: 0
 }
 
 export const reducerFilter = (state: FilterState, action: FilterActions) => {
@@ -36,9 +38,12 @@ export const reducerFilter = (state: FilterState, action: FilterActions) => {
       return {
         ...state,
         filters: {
-          ...state.filters,
-          apply: false
+          ...initialFilterState.filters
         }
+      }
+    case 'LOAD_MORE':
+      return {
+        ...state
       }
     default:
       return state

@@ -12,27 +12,24 @@ export const SearchContext = React.createContext<{
   dispatch: React.Dispatch<FilterActions>
 }>({state: initialFilterState, dispatch: () => undefined})
 
+const SearchResult = () => (
+  <>
+    <SearchedHeader />
+    <FilterButton />
+    <SearchList />
+  </>
+)
+
 const Search = () => {
   const [ state, dispatch ] = useReducer(reducerFilter, initialFilterState)
-
-  const SearchComponents = () => {
-    if (state.filterOpen) {
-      return <FilterWindow />
-    }
-
-    return (
-      <>
-        <SearchedHeader />
-        <FilterButton />
-        <SearchList />
-      </>
-    )
-  }
 
   return (
     <SearchContext.Provider value={{state, dispatch}}>
       <GlobalRules>
-        <SearchComponents />
+        {state.filterOpen ? <FilterWindow /> : <SearchResult />}
+        <div>
+          next
+        </div>
       </GlobalRules>
     </SearchContext.Provider>
   )

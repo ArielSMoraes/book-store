@@ -14,7 +14,9 @@ const FindInput: FunctionComponent = () => {
   }
 
   const goToSearchPage = () => {
-    history.push(`/search/${inputText}`)
+    if (inputText !== '') {
+      history.push(`/search/${inputText}`)
+    }
   }
 
   const InativeSearch = () => {
