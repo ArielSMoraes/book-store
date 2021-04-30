@@ -49,12 +49,13 @@ const FilterButton: FunctionComponent = () => {
     <form onSubmit={applyFilters}>
       <Div>
         <Span>Filtrar:</Span>
-        <IoMdClose size="16pt" onClick={closeFilter}/>
+        <IoMdClose data-testid='close-filter' size="16pt" onClick={closeFilter} />
       </Div>
       <div>
         <H1>Preço</H1>
         <InputBox>
           <input
+            data-testid='first-price'
             type="radio"
             id="price-1"
             name="price"
@@ -99,6 +100,7 @@ const FilterButton: FunctionComponent = () => {
         <H1>Disponibilidade para venda</H1>
         <InputBox>
           <input
+            data-testid='first-available'
             type="radio"
             id="available"
             name="available"
@@ -122,7 +124,13 @@ const FilterButton: FunctionComponent = () => {
       <div>
         <H1>Formatos disponíveis</H1>
         <InputBox>
-          <input type="checkbox" id="epub" name="epub" onChange={onChangeEpub}/>
+          <input
+            data-testid='epub'
+            type="checkbox"
+            id="epub"
+            name="epub"
+            onChange={onChangeEpub}
+          />
           <label htmlFor="epub">Epub</label>
         </InputBox>
         <InputBox>
@@ -131,7 +139,7 @@ const FilterButton: FunctionComponent = () => {
         </InputBox>
       </div>
 
-      <FilterNow>Filtrar Agora</FilterNow>
+      <FilterNow data-testid="apply-filter">Filtrar Agora</FilterNow>
     </form>
   )
 }

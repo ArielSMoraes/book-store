@@ -18,7 +18,7 @@ const FilterButton: FunctionComponent = () => {
         color='white'
         style={{marginRight: '8pt'}}
       />
-      <span>Filtrar</span>
+      <span data-testid="filter">Filtrar</span>
     </Button>
   )
 }
