@@ -27,9 +27,6 @@ const Search = () => {
     <SearchContext.Provider value={{state, dispatch}}>
       <GlobalRules>
         {state.filterOpen ? <FilterWindow /> : <SearchResult />}
-        <div>
-          next
-        </div>
       </GlobalRules>
     </SearchContext.Provider>
   )
